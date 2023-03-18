@@ -16,13 +16,17 @@ import wR from '@/public/pieces/wR.svg'
 
 type Props = {
     piece: string,
-    color: string
+    color: string,
+    onClick: () => void,
 }
 
 
-const Square = ({ piece, color }: Props) => {
+const Square = ({ piece, color, onClick }: Props) => {
     return (
-        <div className={`h-20 w-20 border border-black ${color}`}>
+        <div
+            className={`h-20 w-20 border border-black ${color}`}
+            onClick={() => onClick()}
+        >
 
             {/* Render correct image */}
             {piece === "bB" && <Image src={bB} alt="bB" />}
