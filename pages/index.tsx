@@ -1,9 +1,9 @@
-import Board from "@/components/Board";
+import BoardUI from "@/components/BoardUI";
 
 export default function Home() {
   return (
     <>
-      <Board />
+      <BoardUI />
     </>
   )
 }

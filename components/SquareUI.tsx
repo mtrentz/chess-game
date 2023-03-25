@@ -21,7 +21,7 @@ type Props = {
 }
 
 
-const Square = ({ piece, color, onClick }: Props) => {
+const SquareUI = ({ piece, color, onClick }: Props) => {
     return (
         <div
             className={`h-20 w-20 border border-black ${color}`}
@@ -47,4 +47,4 @@ const Square = ({ piece, color, onClick }: Props) => {
     )
 }
 
-export default Square
+export default SquareUI
