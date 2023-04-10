@@ -1,7 +1,8 @@
 // rafce -> tab
 import React, { useRef, useState, useEffect } from 'react'
 import SquareUI from './SquareUI'
-import { GameEngine, Square, createSquare, Board, Coordinates } from '@/types'
+import { Square, createSquare, Board, Coordinates } from '@/types'
+import { GameEngine } from '@/models/gameEngine';
 import { verify } from 'crypto';
 
 
@@ -44,6 +45,7 @@ const BoardUI = () => {
             if(board[row][col].piece[0] === board[selectedSquare.row][selectedSquare.col].piece[0]) {
                 setSelectedSquare({row, col});
                 gameEngine.selectPiece({row, col});
+                gameEngine.getAllowedSquares(row, col);
                 setBoard(gameEngine.getBoard());
                 return;
             }
@@ -77,7 +79,7 @@ const BoardUI = () => {
             gameEngine.selectPiece({row, col});
                 
             //hora do show. Highlighta todas as possibilidades.
-            gameEngine.getAllowedSquares({row, col});
+            gameEngine.getAllowedSquares(row, col);
             
             setBoard(gameEngine.getBoard());
         }

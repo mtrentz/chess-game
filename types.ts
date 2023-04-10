@@ -12,67 +12,6 @@ export function createSquare(piece: string, col: number, row: number, highlighte
 
 export type Board = Square[][];
 
-export class GameEngine {
-
-    private board: Board;
-
-    constructor(board: Board) {
-        this.board = board;
-    }
-
-    getBoard(): Board {
-        return this.board;
-    }
-
-    setBoard(board: Board): void {
-        this.board = board;
-    }
-
-    selectPiece(coord: Coordinates | null): void {
-
-        this.board.map(row => {
-            row.map(square => {
-                square.highlighted = false;
-            })
-        });
-
-        if (coord) this.board[coord.row][coord.col].highlighted = true;
-    }
-
-    isEmpty(coord: Coordinates): boolean {
-        return this.board[coord.row][coord.col].piece === '';
-    }
-
-    getAllowedSquares(coord: Coordinates) {
-
-        let previousCoord = this.getHighlighted();
-        if(!previousCoord) {
-            return;
-        }
-
-        let team = this.board[previousCoord.row][previousCoord.col].piece[0];
-        let piece = this.board[previousCoord.row][previousCoord.col].piece[1];
-        
-
-    }
-
-    getHighlighted(): Coordinates | null {
-        this.board.forEach(row => {
-            row.forEach(square => {
-                if (square.highlighted) {
-                    let coord: Coordinates = {
-                        row: square.row,
-                        col: square.col
-                    }
-                    return coord;
-                }
-            })
-        })
-        return null;
-    }
-
-}
-
 const chessBoard: Square[][] = [
     ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"].map((piece, col) =>
         createSquare(piece, col, 0, false, `${String.fromCharCode(97 + col)}1`)
